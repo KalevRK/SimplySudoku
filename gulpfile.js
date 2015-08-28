@@ -147,7 +147,7 @@ gulp.task('move-html', ['compile-jade'], function() {
 gulp.task('watch', function() {
   gulp.watch(Path.CLIENT_JS, ['browserify-client', 'test']);
   gulp.watch(Path.SPEC_JS, ['browserify-test', 'test']);
-  gulp.watch(Path.JADE, ['compile-jade']);
+  gulp.watch(Path.JADE, ['move-html']);
   gulp.watch(Path.SCSS, ['compile-scss']);
 });
 
