@@ -66,6 +66,7 @@ h1 {
   min-width: 125px;
   margin: 0 auto;
   text-align: center;
+  padding: 0.5em 0;
   border: 1px solid black;
   border-radius: 10px;
 }
@@ -113,7 +114,7 @@ form {
   right: 0;
   text-align: center;
   opacity: 0.8;
-  padding-top: 2em;
+  padding-top: 0.3em;
 }
 
 form.hidden {
@@ -125,4 +126,9 @@ form.hidden {
   text-align: center;
   opacity: 0.0;
   padding-top: 2em;
+}
+
+input {
+  text-align: center;
+  font-size: 1em;
 }

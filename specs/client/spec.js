@@ -28,24 +28,37 @@ describe('Loading a board', function() {
   });
 
   it('should update the DOM nodes with the appropriate board values', function() {
-    var firstCell = $('.content.mutable').first().html();
-    var fourthCell = $('.content.immutable').first().html();
+    var firstCell = $('#1').children('.content').html();
+    var fourthCell = $('#3').children('.content').html();
     expect(firstCell).to.equal(' ');
     expect(fourthCell).to.equal('2');
   });
 });
 
 describe('Manipulating a board', function() {
-  xit('should change a value in a mutable cell', function() {
 
+  beforeEach(function() {
+    board.loadBoard('easy');
+    var loadedGameBoard = board.getGameBoard();
+  })
+
+  it('should change a value in a mutable cell', function() {
+    board.updateCellValue(0,1);
+    expect(board.getGameBoard()[0]).to.equal(1);
   });
 
-  xit('should update the DOM node with the appropriate cell value', function() {
-
+  it('should update the DOM node with the appropriate cell value', function() {
+    $('#0').find('input').val('1');
+    $('#0').find('form').trigger('submit');
+    var cellContent = $('#0').children('.content').html();
+    expect(cellContent).to.equal('1');
   });
 
-  xit('should not change a value in an immutable cell', function() {
-
+  it('should not change a value in an immutable cell', function() {
+    $('#3').find('input').val('1');
+    $('#3').find('form').trigger('submit');
+    var cellContent = $('#3').children('.content').html();
+    expect(cellContent).to.equal('2');
   });
 });
 

@@ -8,6 +8,12 @@ $(document).ready(function() {
   // Holds the currently loaded board
   var currentBoard;
 
+  // Holds value from a mutable cell
+  var inputValue;
+
+  // Holds the number of the cell that the value is from
+  var cellIndex;
+
 
   // Clears any old game board values from the DOM and replaces them with the new game board values
   function refreshGameBoard() {
@@ -34,12 +40,40 @@ $(document).ready(function() {
         // Make it a mutable cell
         $(this).addClass('mutable');
         // Add a form within every mutable cell
-        $(this).after('<form class="hidden"><input type="text" size="1"></form>');
+        $(this).after('<form class="input-form hidden"><input type="text" size="1"></form>');
       }
     });
 
+    // Change the content of the cell and hide the form when the form is submitted
+    $('form').submit(changeCellValue);
+  };
+
+  // Reveal the input form on a mutable cell
+  function revealInputForm() {
+    $(this).find('form').removeClass('hidden');
+  };
+
+  // Reveal the input form when a mutable cell is clicked
+  $('.cell').click(revealInputForm);
+
+  // Change the value on a mutable cell
+  function changeCellValue(event) {
+    event.preventDefault();
+    // Get the value from the input field
+    inputValue = $(this).children('input').val();
+    // Get the id of the cell that the form belongs to
+    cellIndex = $(this).closest('.cell').attr('id');
+    // Set the content of the cell with the new value
+    $(this).siblings('.content').html(inputValue);
+    // Hide the input form
+    $(this).addClass('hidden');
+    // Clear the input field
+    $(this).children('input').val('');
+    // Update the value in the current game board
+    boardUtil.updateCellValue(cellIndex, inputValue);
   };
 
   // Initialize the game
   refreshGameBoard();
+
 });
