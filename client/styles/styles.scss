@@ -106,6 +106,10 @@ h1 {
   line-height: 2em;
 }
 
+.content.immutable {
+  font-weight: bold;
+}
+
 form {
   position: absolute;
   top: 0;
@@ -131,4 +135,23 @@ form.hidden {
 input {
   text-align: center;
   font-size: 1em;
+}
+
+.winstate {
+  color: green;
+}
+
+#solved {
+  width: 80%;
+  margin: 10px auto;
+  text-align: center;
+  color: green;
+}
+
+#solved.hidden {
+  opacity: 0.0;
+}
+
+.conflict {
+  color: red;
 }

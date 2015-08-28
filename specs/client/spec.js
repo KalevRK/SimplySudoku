@@ -13,7 +13,7 @@ describe('Loading a board', function() {
     loadedSolutionBoard = board.getSolutionBoard();
     easyGameBoard = boardData['easy'][0]['gameboard'].slice();
     easySolutionBoard = boardData['easy'][0]['solutionboard'].slice();
-  })
+  });
 
   it('should load the selected board into the game board', function() {
     easyGameBoard.forEach(function(element, index) {
@@ -40,7 +40,7 @@ describe('Manipulating a board', function() {
   beforeEach(function() {
     board.loadBoard('easy');
     var loadedGameBoard = board.getGameBoard();
-  })
+  });
 
   it('should change a value in a mutable cell', function() {
     board.updateCellValue(0,1);
@@ -63,18 +63,40 @@ describe('Manipulating a board', function() {
 });
 
 describe('Checking board conflicts', function() {
-  xit('should detect all board conflicts for a given conflicting value', function() {
-
+  
+  beforeEach(function() {
+    board.loadBoard('easy');
+    var loadedGameBoard = board.getGameBoard();
+    board.updateCellValue(0,1);
   });
 
-  xit('should remove all relevant conflicts when a conflicting value is changed', function() {
+  it('should detect all board conflicts for a given conflicting value', function() {
+    var conflicts = board.checkBoardConflicts(0);
+    expect(conflicts.length).to.equal(3);
+    expect(conflicts[0]).to.equal(8);
+    expect(conflicts[1]).to.equal(18);
+  });
 
+  it('should remove all relevant conflicts when a conflicting value is changed', function() {
+    board.updateCellValue(0,4);
+    var conflicts = board.checkBoardConflicts(0);
+    expect(conflicts.length).to.equal(0);
   });
 });
 
 describe('Checking board solved state', function() {
-  xit('should trigger the win state on a solved board', function() {
+  
+  beforeEach(function() {
+    board.loadBoard('easy');
+    var loadedGameBoard = board.getGameBoard();
+    var loadedSolutionBoard = board.getSolutionBoard();
+    loadedSolutionBoard.forEach(function(element, index) {
+      board.updateCellValue(index, element);
+    });
+  });
 
+  it('should trigger the win state on a solved board', function() {
+    expect(board.checkWinState()).to.equal(true);
   });
 });
 

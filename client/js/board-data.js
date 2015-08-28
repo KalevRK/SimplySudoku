@@ -42,6 +42,6 @@ var boards = {
       solutionboard: []
     }
   ],
-}
+};
 
 module.exports = boards;

@@ -19,7 +19,8 @@ $(document).ready(function() {
   function refreshGameBoard() {
     // Load a new game board
     currentBoard = boardUtil.loadBoard('easy');
-
+    // Hide the solved text
+    $('#solved').addClass('hidden');
     // Remove any classes from the gameboard cells
     $('.cell').removeClass('mutable immutable');
     // Remove any forms from the gameboard cells
@@ -46,7 +47,7 @@ $(document).ready(function() {
 
     // Change the content of the cell and hide the form when the form is submitted
     $('form').submit(changeCellValue);
-  };
+  }
 
   // Reveal the input form on a mutable cell
   function revealInputForm() {
@@ -70,8 +71,43 @@ $(document).ready(function() {
     // Clear the input field
     $(this).children('input').val('');
     // Update the value in the current game board
-    boardUtil.updateCellValue(cellIndex, inputValue);
-  };
+    var updatedResults = boardUtil.updateCellValue(cellIndex, inputValue);
+    // If the win state flag is set then display the win state
+    console.log('updatedResults[0]:', updatedResults[0]);
+
+    if (updatedResults[0]) {
+      displayWinState();
+    } else {
+      // Otherwise, check number of conflicts
+      if (updatedResults[1].length > 0) {
+        // Display the conflicts
+        displayConflicts(parseInt($(this).closest('.cell').attr('id')),updatedResults[1]);
+      } else {
+        // If no conflicts then clear any previous conflict formatting
+        console.log('no conflicts');
+        $('.cell').removeClass('conflict');
+      }
+    }
+  }
+
+  // Display the win state
+  function displayWinState() {
+    // Set the win state styling on all of the cells
+    $('.content').addClass('winstate');
+    // Make the win state div visible
+    $('#solved').removeClass('hidden');
+  }
+
+  // Display any conflicts
+  function displayConflicts(targetIndex, conflictIndices) {
+    // For the target index, and all of the conflict indices
+    // change the numbers to red
+    $('#'+targetIndex).addClass('conflict');
+
+    conflictIndices.forEach(function(element) {
+      $('#'+element).addClass('conflict');
+    });
+  }
 
   // Initialize the game
   refreshGameBoard();
