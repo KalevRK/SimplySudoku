@@ -2,11 +2,49 @@
   box-sizing: border-box;
 }
 
-#gameboard {
-  width: 40%;
-  height: auto;
-  margin: 0 auto;
-  border: 1px solid black;
+@media (min-width: 1280px) {
+  #gameboard {
+    width: 40%;
+    height: auto;
+    margin: 0 auto;
+    border: 1px solid black;
+  }
+}
+
+@media (max-width: 1280px) {
+  #gameboard {
+    width: 45%;
+    height: auto;
+    margin: 0 auto;
+    border: 1px solid black;
+  }
+}
+
+@media (max-width: 960px) {
+  #gameboard {
+    width: 60%;
+    height: auto;
+    margin: 0 auto;
+    border: 1px solid black;
+  }
+}
+
+@media (max-width: 768px) {
+  #gameboard {
+    width: 70%;
+    height: auto;
+    margin: 0 auto;
+    border: 1px solid black;
+  }
+}
+
+@media (max-width: 480px) {
+  #gameboard {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    border: 1px solid black;
+  }
 }
 
 h1 {
