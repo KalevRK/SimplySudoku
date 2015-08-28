@@ -1,1 +1,1 @@
-*{box-sizing:border-box}
+.cell,.row{position:relative}.content,h1{text-align:center}*{box-sizing:border-box}#gameboard{width:40%;height:auto;margin:0 auto;border:1px solid #000}h1{width:80%;margin:1em auto}.row{overflow:auto}.row:nth-child(3n+1){border-top:2px solid #000}.cell{float:left;width:11.11%;border:1px solid gray}.cell:hover{background-color:#d3d3d3}.cell:nth-child(4n){border-left:2px solid #000}.content{font-size:1em;line-height:2em}

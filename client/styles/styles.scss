@@ -1,3 +1,46 @@
 * {
   box-sizing: border-box;
 }
+
+#gameboard {
+  width: 40%;
+  height: auto;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+
+h1 {
+  width: 80%;
+  margin: 1em auto;
+  text-align: center;
+}
+
+.row {
+  position: relative;
+  overflow: auto;
+}
+
+.row:nth-child(3n+4) {
+  border-top: 2px solid black;
+}
+
+.cell {
+  position: relative;
+  float: left;
+  width: 11.11%;
+  border: 1px solid gray;
+}
+
+.cell:hover {
+  background-color: lightgray;
+}
+
+.cell:nth-child(3n+4) {
+  border-left: 2px solid black;
+}
+
+.content {
+  text-align: center;
+  font-size: 1em;
+  line-height: 2em;
+}
