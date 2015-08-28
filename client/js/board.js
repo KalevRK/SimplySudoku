@@ -15,8 +15,8 @@ var boardUtils = (function() {
     var boardNumber = Math.floor(Math.random() * (stored_boards[difficulty].length));
 
     // Load the retrieved boards
-    gameBoard = stored_boards[difficulty][boardNumber]['gameboard'];
-    solutionBoard = stored_boards[difficulty][boardNumber]['solutionboard'];
+    gameBoard = stored_boards[difficulty][boardNumber]['gameboard'].slice();
+    solutionBoard = stored_boards[difficulty][boardNumber]['solutionboard'].slice();
 
     // Send the retrieved game board back to app.js, so that it can update the DOM
     return gameBoard;

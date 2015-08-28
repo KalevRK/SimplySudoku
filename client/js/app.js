@@ -27,7 +27,8 @@ $(document).ready(function() {
     // Hide the solved text
     $('#solved').addClass('hidden');
     // Remove any classes from the gameboard cells
-    $('.cell').removeClass('mutable immutable');
+    $('.content').removeClass('mutable immutable');
+    $('.cell').removeClass('conflict');
     // Remove any forms from the gameboard cells
     $('form').remove();
 
