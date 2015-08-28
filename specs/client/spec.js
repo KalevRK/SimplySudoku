@@ -1,16 +1,37 @@
 var expect = require('chai').expect;
+var $ = require('jquery');
+var board = require('../../client/js/board.js');
+var boardData = require('../../client/js/board-data.js');
+require('../../client/js/app.js');
 
 describe('Loading a board', function() {
-  xit('should load the selected board into the game board', function() {
+  var loadedGameBoard, loadedSolutionBoard, easyGameBoard, easySolutionBoard;
 
+  beforeEach(function() {
+    board.loadBoard('easy');
+    loadedGameBoard = board.getGameBoard();
+    loadedSolutionBoard = board.getSolutionBoard();
+    easyGameBoard = boardData['easy'][0]['gameboard'].slice();
+    easySolutionBoard = boardData['easy'][0]['solutionboard'].slice();
+  })
+
+  it('should load the selected board into the game board', function() {
+    easyGameBoard.forEach(function(element, index) {
+      expect(element).to.equal(loadedGameBoard[index]);
+    });
   });
 
-  xit('should load the corresponding solved board into the solution board', function() {
-
+  it('should load the corresponding solved board into the solution board', function() {
+    easySolutionBoard.forEach(function(element, index) {
+      expect(element).to.equal(loadedSolutionBoard[index]);
+    });
   });
 
-  xit('should update the DOM nodes with the appropriate board values', function() {
-
+  it('should update the DOM nodes with the appropriate board values', function() {
+    var firstCell = $('.content.mutable').first().html();
+    var fourthCell = $('.content.immutable').first().html();
+    expect(firstCell).to.equal(' ');
+    expect(fourthCell).to.equal('2');
   });
 });
 

@@ -87,6 +87,7 @@ h1 {
   position: relative;
   float: left;
   width: 11.11%;
+  min-height: 34px;
   border: 1px solid gray;
 }
 
@@ -102,4 +103,26 @@ h1 {
   text-align: center;
   font-size: 1em;
   line-height: 2em;
+}
+
+form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+  opacity: 0.8;
+  padding-top: 2em;
+}
+
+form.hidden {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+  opacity: 0.0;
+  padding-top: 2em;
 }
