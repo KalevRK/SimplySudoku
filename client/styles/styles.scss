@@ -73,6 +73,7 @@ h1 {
 
 .navitem:hover {
   background-color: lightgray;
+  cursor: pointer;
 }
 
 .row {
@@ -94,6 +95,10 @@ h1 {
 
 .cell:hover {
   background-color: lightgray;
+}
+
+.content.immutable {
+  background-color: white;
 }
 
 .cell:nth-child(3n+4) {

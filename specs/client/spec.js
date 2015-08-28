@@ -8,11 +8,11 @@ describe('Loading a board', function() {
   var loadedGameBoard, loadedSolutionBoard, easyGameBoard, easySolutionBoard;
 
   beforeEach(function() {
-    board.loadBoard('easy');
+    board.loadBoard('Easy');
     loadedGameBoard = board.getGameBoard();
     loadedSolutionBoard = board.getSolutionBoard();
-    easyGameBoard = boardData['easy'][0]['gameboard'].slice();
-    easySolutionBoard = boardData['easy'][0]['solutionboard'].slice();
+    easyGameBoard = boardData['Easy'][0]['gameboard'].slice();
+    easySolutionBoard = boardData['Easy'][0]['solutionboard'].slice();
   });
 
   it('should load the selected board into the game board', function() {
@@ -38,7 +38,7 @@ describe('Loading a board', function() {
 describe('Manipulating a board', function() {
 
   beforeEach(function() {
-    board.loadBoard('easy');
+    board.loadBoard('Easy');
     var loadedGameBoard = board.getGameBoard();
   });
 
@@ -65,7 +65,7 @@ describe('Manipulating a board', function() {
 describe('Checking board conflicts', function() {
   
   beforeEach(function() {
-    board.loadBoard('easy');
+    board.loadBoard('Easy');
     var loadedGameBoard = board.getGameBoard();
     board.updateCellValue(0,1);
   });
@@ -87,7 +87,7 @@ describe('Checking board conflicts', function() {
 describe('Checking board solved state', function() {
   
   beforeEach(function() {
-    board.loadBoard('easy');
+    board.loadBoard('Easy');
     var loadedGameBoard = board.getGameBoard();
     var loadedSolutionBoard = board.getSolutionBoard();
     loadedSolutionBoard.forEach(function(element, index) {
@@ -101,15 +101,30 @@ describe('Checking board solved state', function() {
 });
 
 describe('Generating a new board', function() {
-  xit('should generate a new easy difficulty board', function() {
 
+  var easyBoard, mediumBoard, hardBoard, loadedGameBoard;
+
+  before(function() {
+    easyBoard = boardData['Easy'][0]['gameboard'].slice();
+    mediumBoard = boardData['Medium'][0]['gameboard'].slice();
+    hardBoard = boardData['Hard'][0]['gameboard'].slice();
   });
 
-  xit('should generate a new medium difficulty board', function() {
-
+  it('should generate a new easy difficulty board', function() {
+    board.loadBoard('Easy');
+    loadedGameBoard = board.getGameBoard();
+    expect(loadedGameBoard).eql(easyBoard);
   });
 
-  xit('should generate a new hard difficulty board', function() {
+  it('should generate a new medium difficulty board', function() {
+    board.loadBoard('Medium');
+    loadedGameBoard = board.getGameBoard();
+    expect(loadedGameBoard).eql(mediumBoard);
+  });
 
+  it('should generate a new hard difficulty board', function() {
+    board.loadBoard('Hard');
+    loadedGameBoard = board.getGameBoard();
+    expect(loadedGameBoard).eql(hardBoard);
   });
 });

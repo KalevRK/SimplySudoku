@@ -14,11 +14,16 @@ $(document).ready(function() {
   // Holds the number of the cell that the value is from
   var cellIndex;
 
+  // All of the available difficulty levels
+  var difficultyLevels = ['Easy', 'Medium', 'Hard'];
+  var difficultyIndex = 0;
+  var difficulty = 'Easy';
+
 
   // Clears any old game board values from the DOM and replaces them with the new game board values
   function refreshGameBoard() {
     // Load a new game board
-    currentBoard = boardUtil.loadBoard('easy');
+    currentBoard = boardUtil.loadBoard(difficulty);
     // Hide the solved text
     $('#solved').addClass('hidden');
     // Remove any classes from the gameboard cells
@@ -73,8 +78,6 @@ $(document).ready(function() {
     // Update the value in the current game board
     var updatedResults = boardUtil.updateCellValue(cellIndex, inputValue);
     // If the win state flag is set then display the win state
-    console.log('updatedResults[0]:', updatedResults[0]);
-
     if (updatedResults[0]) {
       displayWinState();
     } else {
@@ -84,7 +87,6 @@ $(document).ready(function() {
         displayConflicts(parseInt($(this).closest('.cell').attr('id')),updatedResults[1]);
       } else {
         // If no conflicts then clear any previous conflict formatting
-        console.log('no conflicts');
         $('.cell').removeClass('conflict');
       }
     }
@@ -108,6 +110,26 @@ $(document).ready(function() {
       $('#'+element).addClass('conflict');
     });
   }
+
+
+  // Cycle through the available difficulties
+  // The selected difficulty will be used when the
+  // 'Generate Board' button is clicked to generate
+  // a new board
+  function cycleDifficulty() {
+    difficulty = difficultyLevels[difficultyIndex];
+    if (difficultyIndex === 2) {
+      difficultyIndex = 0;
+    } else {
+      difficultyIndex++;
+    }
+    $('#difficulty').text(difficulty);
+  };
+
+  // Cycle through the difficulty settings
+  $('#difficulty').click(cycleDifficulty);
+
+  $('#generate').click(refreshGameBoard);
 
   // Initialize the game
   refreshGameBoard();
