@@ -81,17 +81,27 @@ $(document).ready(function() {
     // Update the value in the current game board
     var updatedResults = boardUtil.updateCellValue(cellIndex, inputValue);
     // If the win state flag is set then display the win state
-
     if (updatedResults[0]) {
       displayWinState();
     } else {
       // Otherwise, check number of conflicts
-      if (updatedResults[1].length > 0) {
+      if (updatedResults[1].length) {
         // Display the conflicts
         displayConflicts(parseInt($(this).closest('.cell').attr('id')),updatedResults[1]);
       } else {
         // If no conflicts then clear any previous conflict formatting
         $('.cell').removeClass('conflict');
+        $('.cell').each(function() {
+          // For each cell with mutable state
+          // check if its value still causes any conflicts
+          if ($(this).children('.content').hasClass('mutable')) {
+            var conflicts = boardUtil.checkBoardConflicts($(this).attr('id'));
+            // If conflicts still exist then style the affected cells
+            if (conflicts.length > 0) {
+              displayConflicts(parseInt($(this).attr('id')),conflicts);
+            }
+          }
+        });
       }
     }
   }
@@ -106,10 +116,10 @@ $(document).ready(function() {
 
   // Display any conflicts
   function displayConflicts(targetIndex, conflictIndices) {
-    // For the target index, and all of the conflict indices
-    // change the numbers to red
+    // For the target index change its number to red
     $('#'+targetIndex).addClass('conflict');
-
+    // For all of the other conflicting indices
+    // change their numbers to red
     conflictIndices.forEach(function(element) {
       $('#'+element).addClass('conflict');
     });
@@ -133,6 +143,7 @@ $(document).ready(function() {
   // Cycle through the difficulty settings
   $('#difficulty').click(cycleDifficulty);
 
+  // Generate a new board with the selected difficulty
   $('#generate').click(refreshGameBoard);
 
   // Initialize the game
