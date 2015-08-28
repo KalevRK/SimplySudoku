@@ -4,6 +4,8 @@ var rename = require('gulp-rename');
 
 // Linting
 var jshint = require('gulp-jshint');
+var jshintConfig = require('./package.json').jshintConfig;
+jshintConfig.lookup = false;
 
 // Client-side Module Use
 var browserify = require('browserify');
@@ -46,14 +48,14 @@ var Path = {
 // Lint client javascript files
 gulp.task('jshint-client', function() {
   return gulp.src(Path.CLIENT_JS)
-    .pipe(jshint())
+    .pipe(jshint(jshintConfig))
     .pipe(jshint.reporter('jshint-stylish'));
 });
 
 // Lint test spec javascript files
 gulp.task('jshint-test', function() {
   return gulp.src(Path.SPEC_JS)
-    .pipe(jshint())
+    .pipe(jshint(jshintConfig))
     .pipe(jshint.reporter('jshint-stylish'));
 });
 

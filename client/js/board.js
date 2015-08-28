@@ -71,7 +71,7 @@ var boardUtils = (function() {
     var column = Math.floor(index % 9);
 
     // Check for column conflicts
-    for (var i = column; i < (column + 72); i += 9) {
+    for (i = column; i < (column + 72); i += 9) {
       if ((i !== index) && (gameBoard[i] === target)) {
         // Conflict found at index i
         conflictIndices.push(i);
@@ -83,7 +83,7 @@ var boardUtils = (function() {
     var boxCol = Math.floor(column / 3) * 3;
 
     // Check for sub-box conflicts
-    for (var i = boxRow; i < (boxRow + 3); i++) {
+    for (i = boxRow; i < (boxRow + 3); i++) {
       for (var j = boxCol; j < (boxCol + 3); j++) {
         var boxIndex = (i * 9) + j;
         if ((boxIndex !== index) && (gameBoard[boxIndex] === target)) {

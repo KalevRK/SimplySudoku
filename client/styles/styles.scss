@@ -2,11 +2,16 @@
   box-sizing: border-box;
 }
 
+body {
+  text-align: center;
+  background-image: url('../../assets/ecailles.png');
+}
+
 @media (min-width: 1280px) {
   #gameboard {
     width: 40%;
     height: auto;
-    margin: 0 auto;
+    margin: 15px auto;
     border: 1px solid black;
   }
 }
@@ -15,7 +20,7 @@
   #gameboard {
     width: 45%;
     height: auto;
-    margin: 0 auto;
+    margin: 15px auto;
     border: 1px solid black;
   }
 }
@@ -24,7 +29,7 @@
   #gameboard {
     width: 60%;
     height: auto;
-    margin: 0 auto;
+    margin: 15px auto;
     border: 1px solid black;
   }
 }
@@ -33,7 +38,7 @@
   #gameboard {
     width: 70%;
     height: auto;
-    margin: 0 auto;
+    margin: 15px auto;
     border: 1px solid black;
   }
 }
@@ -42,37 +47,41 @@
   #gameboard {
     width: 80%;
     height: auto;
-    margin: 0 auto;
+    margin: 15px auto;
     border: 1px solid black;
   }
 }
 
 h1 {
-  width: 80%;
-  margin: 10px auto;
+  display: inline-block;
+  margin: 5px auto;
   text-align: center;
+  font-family: 'Roboto Slab', serif;
+  font-weight: bold;
+  border-bottom: 2px solid #4CAF50;
 }
 
 #navbar {
   width: 20%;
-  min-width: 250px;
-  margin: 15px auto;
+  min-width: 270px;
+  margin: 10px auto;
   overflow: hidden;
 }
 
 .navitem {
   float: left;
   width: 50%;
-  min-width: 125px;
+  min-width: 135px;
   margin: 0 auto;
   text-align: center;
   padding: 0.5em 0;
-  border: 1px solid black;
+  border: 0.15em solid black;
   border-radius: 10px;
+  font-family: 'Roboto Slab', serif;
 }
 
 .navitem:hover {
-  background-color: lightgray;
+  background-color: #CFD8DC;
   cursor: pointer;
 }
 
@@ -94,7 +103,7 @@ h1 {
 }
 
 .cell:hover {
-  background-color: lightgray;
+  background-color: #CFD8DC;
 }
 
 .content.immutable {
@@ -109,6 +118,7 @@ h1 {
   text-align: center;
   font-size: 1em;
   line-height: 2em;
+  font-family: 'Lato', sans-serif;
 }
 
 .content.immutable {
@@ -148,9 +158,9 @@ input {
 
 #solved {
   width: 80%;
-  margin: 10px auto;
+  margin: 20px auto;
   text-align: center;
-  color: green;
+  color: #00C853;
 }
 
 #solved.hidden {
@@ -158,5 +168,5 @@ input {
 }
 
 .conflict {
-  color: red;
+  color: #F44336;
 }

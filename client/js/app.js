@@ -60,7 +60,7 @@ $(document).ready(function() {
   // Reveal the input form on a mutable cell
   function revealInputForm() {
     $(this).find('form').removeClass('hidden');
-  };
+  }
 
   // Reveal the input form when a mutable cell is clicked
   $('.cell').click(revealInputForm);
@@ -125,7 +125,6 @@ $(document).ready(function() {
     });
   }
 
-
   // Cycle through the available difficulties
   // The selected difficulty will be used when the
   // 'Generate Board' button is clicked to generate
@@ -138,7 +137,7 @@ $(document).ready(function() {
       difficultyIndex++;
     }
     $('#difficulty').text(difficulty);
-  };
+  }
 
   // Cycle through the difficulty settings
   $('#difficulty').click(cycleDifficulty);
