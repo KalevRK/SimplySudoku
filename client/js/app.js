@@ -26,6 +26,8 @@ $(document).ready(function() {
     currentBoard = boardUtil.loadBoard(difficulty);
     // Hide the solved text
     $('#solved').addClass('hidden');
+    // Remove the win state styling on all of the cells
+    $('.content').removeClass('winstate');
     // Remove any classes from the gameboard cells
     $('.content').removeClass('mutable immutable');
     $('.cell').removeClass('conflict');
@@ -79,6 +81,7 @@ $(document).ready(function() {
     // Update the value in the current game board
     var updatedResults = boardUtil.updateCellValue(cellIndex, inputValue);
     // If the win state flag is set then display the win state
+
     if (updatedResults[0]) {
       displayWinState();
     } else {

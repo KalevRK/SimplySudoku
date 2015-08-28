@@ -38,7 +38,7 @@ var boardUtils = (function() {
 
     // compare the values in the game board against the solution board
     solutionBoard.forEach(function(element, index) {
-      if ((parseInt(element) !== gameBoard[index])) {
+      if ((parseInt(element) !== parseInt(gameBoard[index]))) {
         // if there is a mis-match in any of the values then the game board is not solved
         boardSolved = false;
       }
