@@ -1,3 +1,7 @@
+$hover-color: #CFD8DC;
+$solved-color: #00C853;
+$conflict-color: #F44336;
+
 * {
   box-sizing: border-box;
 }
@@ -81,7 +85,7 @@ h1 {
 }
 
 .navitem:hover {
-  background-color: #CFD8DC;
+  background-color: $hover-color;
   cursor: pointer;
 }
 
@@ -103,11 +107,11 @@ h1 {
 }
 
 .cell:hover {
-  background-color: #CFD8DC;
+  background-color: $hover-color;
 }
 
 .content.immutable {
-  background-color: white;
+  background-color: #FFFFFF;
 }
 
 .cell:nth-child(3n+4) {
@@ -153,14 +157,14 @@ input {
 }
 
 .winstate {
-  color: green;
+  color: $solved-color;
 }
 
 #solved {
   width: 80%;
   margin: 20px auto;
   text-align: center;
-  color: #00C853;
+  color: $solved-color;
 }
 
 #solved.hidden {
@@ -168,5 +172,5 @@ input {
 }
 
 .conflict {
-  color: #F44336;
+  color: $conflict-color;
 }

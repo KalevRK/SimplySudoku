@@ -16,7 +16,7 @@ $(document).ready(function() {
 
   // All of the available difficulty levels
   var difficultyLevels = ['Easy', 'Medium', 'Hard'];
-  var difficultyIndex = 0;
+  var difficultyIndex = 1;
   var difficulty = 'Easy';
 
 
